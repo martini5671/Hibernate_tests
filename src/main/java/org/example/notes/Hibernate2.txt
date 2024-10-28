@@ -1,0 +1,32 @@
+This code snippet demonstrates the difference between getReference() and find() methods in JPA and how to use the refresh() method to update an entity with the latest database values.
+
+Key Points:
+
+getReference():
+
+Returns a proxy object that represents the entity with the specified ID.
+Lazy loading: It will only issue a select query to the database when an operation (like accessing an attribute) is performed on the proxy object.
+Useful when you need to represent an entity without immediately fetching it from the database.
+find():
+
+Returns the actual entity object from the database.
+Eager loading: It fetches the entity from the database immediately.
+Preferred when you need to work with the entity's data directly.
+refresh():
+
+Refreshes the entity object from the database, overriding any local changes.
+Useful for ensuring the entity reflects the latest state in the database.
+Essentially acts as an undo operation for changes made to the entity in the context before commit.
+Example Code:
+
+The code uses getReference() to retrieve an Employee object with ID 12.
+It modifies the address attribute of the proxy object.
+Before calling refresh(), the address attribute displays the modified value.
+After calling refresh(), the address attribute is reset to the original value stored in the database.
+Summary:
+
+The code demonstrates that:
+
+Using getReference() allows for lazy loading, reducing the number of queries to the database.
+Using refresh() allows you to re-sync the entity object with the database, effectively undoing any local changes.
+This approach is useful when you want to minimize database interactions and ensure that the entity object reflects the latest state in the database.

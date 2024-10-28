@@ -1,0 +1,20 @@
+Entity Class - Employee
+
+@Entity: Marks the class as a JPA entity, indicating it represents a table in the database.
+@Table(name = "employee"): Specifies the name of the table in the database that this entity maps to.
+@Id: Identifies the primary key column.
+@GeneratedValue(strategy = GenerationType.TABLE): Specifies the strategy for generating the primary key value. In this case, a table is used to manage unique identifiers, suitable for databases that don't support AUTO_INCREMENT.
+@Column(name = "id"): Defines the name of the column in the database for the 'id' property.
+@Column: Indicates that a property maps to a column in the database.
+Understanding Generation Strategies
+
+IDENTITY: AUTO_INCREMENT behavior, database manages primary key generation (not portable across all databases).
+TABLE: Uses a separate table to generate and manage unique identifiers. Less performant than IDENTITY but works with databases that don't support IDENTITY.
+UUID: Generates universally unique identifiers (strings) as primary keys. Useful if you need globally unique identifiers or are using front-end systems that work with strings.
+SEQUENCE: Relies on a database sequence to generate primary keys. More performant than TABLE but still uses a database-specific mechanism.
+Considerations
+
+The id is mandatory for an entity and must be unique.
+The id can be a single column (primary key) or composed of multiple columns.
+For the Employee class, the id is generated using the TABLE strategy.
+The name and address columns are mapped using @Column annotations.

@@ -1,0 +1,40 @@
+# Notes on JPA and Hibernate
+
+## 1. Entity Manager
+- Represents the context for managing entities.
+- Allows operations on objects within the context.
+
+## 2. Entity Manager Factory
+- Creates instances of Entity Manager.
+- Used to manage the lifecycle of entity instances.
+
+## 3. Transaction Management
+- Transactions are initiated with `entityManager.getTransaction().begin()`.
+- Changes made during a transaction are committed with `entityManager.getTransaction().commit()`.
+
+## 4. Entity Operations
+- **Persist**: Adds a new entity to the context.
+- **Find**: Retrieves an entity from the database and adds it to the context if it doesn't exist already.
+- **Remove**: Marks an entity for removal from the database.
+- **Detach**: Removes an entity from the context.
+- **Refresh**: Updates the state of an entity in the context with its current state in the database.
+- **Merge**: Merges an entity from outside the context into the current context.
+- **getReference**: Merges an entity from outside the context into the current context.
+
+## 5. Context Behavior
+- Hibernate detects changes made to entities within the context during a transaction.
+- Upon committing, it generates appropriate SQL queries to synchronize changes with the database.
+- Local changes in the context are mirrored in the database.
+
+## 6. Important Notes
+- Entity Manager operations may not always result in immediate database actions; they are subject to the transaction lifecycle.
+- Understanding the lifecycle of entities and transactions is crucial for effective JPA/Hibernate usage.
+- The object HAS TO BE PART OF CONTEXT to make changes in DB in the end of transaction.
+
+PERSISTENCE CONTEXT:
+The persistence context is the first-level cache where all the entities are fetched from the database
+or saved to the database. It sits between our application and persistent storage.
+
+ENTITY MANAGER:
+The EntityManager is the interface that lets us interact with the persistence context.
+Whenever we use the EntityManager, we are actually interacting with the persistence context.
