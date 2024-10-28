@@ -6,6 +6,7 @@ import java.util.Objects;
 // when you have a composed PK you have to implement
 // equals and hashcode
 public class ProductKey implements Serializable {
+
     private String code;
     private long number;
 
